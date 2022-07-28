@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\KategoriProdukController;
-use App\Http\Controllers\BarangMasukController;
-use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -34,5 +32,3 @@ Route::get('/hallo', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('kategori_produk', KategoriProdukController::class);
-Route::resource('barang_masuk', BarangMasukController::class);
-Route::resource('produk', ProdukController::class);
