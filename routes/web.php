@@ -32,3 +32,5 @@ Route::get('/hallo', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('kategori_produk', KategoriProdukController::class);
+Route::resource('barang_masuk', KategoriProdukController::class);
+Route::resource('produk', KategoriProdukController::class);

@@ -30,6 +30,7 @@
             </div>
         @endif
       <form method="POST" action="{{ route('password.email') }}">
+        @csrf
         <div class="input-group mb-3">
           <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
           <div class="input-group-append">
