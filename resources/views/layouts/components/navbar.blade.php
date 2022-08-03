@@ -11,6 +11,7 @@
   </div>
 
   <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+    @role('user')
     <!-- informasi-->
     <div class="navbar-nav align-items-center">
       <div class="nav-item d-flex align-items-center">
@@ -26,10 +27,12 @@
       </div>
     </div>
     <!-- /lokasi-->
+    @endrole
 
     <ul class="navbar-nav flex-row align-items-center ms-auto">
       <!-- Place this tag where you want the button to render. -->
       <li class="nav-item lh-1 me-3">
+        @role('admin')
         <a
           class="github-button"
           data-icon="octicon-star"
@@ -37,14 +40,15 @@
           data-show-count="true"
           aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
           >
-          @guest
-          ?
-          @else
           Admin
-          @endguest
           </a
         >
+        @endrole
+        @role('user')
+          {{Auth::user()->name}}
+        @endrole
       </li>
+      
 
       <!-- User -->
       <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -69,16 +73,19 @@
                     @else
                       <span class="fw-semibold d-block">{{Auth::user()->name}}</span>
                     @endguest
-                  </div>
-                  @guest
-                      <span class="fw-semibold d-block"> </span>
-                  @else
-                    <small class="text-muted">Admin</small>
-                  @endguest
+                  </div>  
                 </div>
               </div>
             </a>
           </li>
+          @role('user')
+          <li>
+            <a class="dropdown-item" href="{{ route('profile.index') }}">
+              <i class="bx bx-user me-2"></i>
+              <span class="align-middle">My Profile</span>
+            </a>
+          </li>
+          @endrole
           <li>
             <div class="dropdown-divider"></div>
           </li>

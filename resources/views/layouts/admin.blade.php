@@ -19,6 +19,7 @@
     <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
     <meta name="description" content="" />
+    
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Data Tables Bootstrap -->
     <link rel="stylesheet" href="text/css" href="{{asset('DataTables/datatables.min.css')}}">
@@ -110,7 +111,7 @@
                   , made with ❤️ by
                   <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">Kelompok 32</a>
                 </div>
-                <div>
+                {{-- <div>
                   <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
                   <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
 
@@ -127,7 +128,7 @@
                     class="footer-link me-4"
                     >Support</a
                   >
-                </div>
+                </div> --}}
               </div>
             </footer>
             <!-- / Footer -->
@@ -187,3 +188,6 @@
     </script>
   </body>
 </html>
+
+
+
