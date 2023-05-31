@@ -12,13 +12,19 @@ return [
     'truncate_tables' => true,
 
     'roles_structure' => [
-        'admin' => [
+        'owner' => [
             'users' => 'c,r,u,d',
             'payments' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
-        'user' => [
+        'gudang' => [
             'users' => 'c,r,u,d',
+            'profile' => 'r,u'
+        ],
+        'kasir' => [
+            'profile' => 'r,u'
+        ],
+        'user' => [
             'profile' => 'r,u'
         ],
     ],

@@ -1,5 +1,4 @@
 <!-- Navbar -->
-
 <nav
   class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
   id="layout-navbar"
@@ -11,7 +10,23 @@
   </div>
 
   <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-    @role('user')
+    <!-- Search -->
+    @guest
+    <div class="navbar-nav align-items-center">
+      <div class="nav-item d-flex align-items-center">
+        <i class="bx bx-search fs-4 lh-0"></i>
+        <input
+          type="text"
+          class="form-control border-0 shadow-none"
+          placeholder="Search..."
+          aria-label="Search..."
+        />
+      </div>
+    </div>
+    @else  
+    @endguest
+    <!-- /Search -->
+    
     <!-- informasi-->
     <div class="navbar-nav align-items-center">
       <div class="nav-item d-flex align-items-center">
@@ -27,12 +42,10 @@
       </div>
     </div>
     <!-- /lokasi-->
-    @endrole
 
     <ul class="navbar-nav flex-row align-items-center ms-auto">
       <!-- Place this tag where you want the button to render. -->
       <li class="nav-item lh-1 me-3">
-        @role('admin')
         <a
           class="github-button"
           data-icon="octicon-star"
@@ -40,36 +53,35 @@
           data-show-count="true"
           aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
           >
-          Admin
+          {{Auth::user()->name}}
           </a
         >
-        @endrole
-        @role('user')
-          {{Auth::user()->name}}
-        @endrole
       </li>
+      
       
 
       <!-- User -->
       <li class="nav-item navbar-dropdown dropdown-user dropdown">
-        <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+        <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(1);" data-bs-toggle="dropdown">
           <div class="avatar avatar-online">
-            <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+            <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" />
           </div>
         </a>
+        
         <ul class="dropdown-menu dropdown-menu-end">
+          
           <li>
             <a class="dropdown-item" href="#">
               <div class="d-flex">
                 <div class="flex-shrink-0 me-3">
                   <div class="avatar avatar-online">
-                    <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                    <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" />
                   </div>
                 </div>
                 <div class="flex-grow-1">
                   <div class="info">
                     @guest
-                      <span class="fw-semibold d-block"> ? </span>
+                      <span class="fw-semibold d-block"> </span>
                     @else
                       <span class="fw-semibold d-block">{{Auth::user()->name}}</span>
                     @endguest
@@ -78,14 +90,7 @@
               </div>
             </a>
           </li>
-          @role('user')
-          <li>
-            <a class="dropdown-item" href="{{ route('profile.index') }}">
-              <i class="bx bx-user me-2"></i>
-              <span class="align-middle">My Profile</span>
-            </a>
-          </li>
-          @endrole
+          
           <li>
             <div class="dropdown-divider"></div>
           </li>
