@@ -20,14 +20,6 @@
                     </tbody>
                 </table>
                 <br>
-                <button type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#modalCenter" 
-                id="btn-tambah"
-                class="btn btn-primary">Tambah User</button>
-                <a type="button"
-                class="btn btn-danger">
-                Batal</a>
             </div>
             
         </div>
@@ -99,6 +91,76 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="modalCenterTitle">Role : <label for="" id="labelRole"></label></h5>
+        <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+        ></button>
+        </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col mb-3">
+                    <label for="names" class="form-label">Username</label>
+                    <input
+                        type="text"
+                        id="names"
+                        name="names"
+                        class="form-control"
+                        placeholder="Names"
+                    />
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="emails" class="form-label">Email</label>
+                        <input
+                            type="text"
+                            id="emails"
+                            name="emails"
+                            class="form-control"
+                            placeholder="xxxx@xxx.xx"
+                        />
+                    </div>
+                </div>
+                
+                <div id="formRole" hidden>
+                    <h5>Pilih Role</h5>
+                    <div class="form-check">
+                        <input type="radio" name="roles" id="roles" class="roles" value="owner">
+                        <label for="roles">Super Admin</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="roles" id="roles" class="roles" value="gudang">
+                        <label for="roles">Admin Gudang</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="roles" id="roles" class="roles" value="kasir">
+                        <label for="roles">Admin Kasir</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Button to trigger modal -->
+
+
+            <div class="modal-footer">
+                <button type="button" id="btn-tutup" name="batal" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button type="submit" id="editUser" class="btn btn-primary">Edit</button>
+                <button type="submit" disabled id="simpaneditUser" class="btn btn-primary">Simpan Edit</button>
+            </div>
+    </div>
+    </div>
+</div>
 <script type="text/javascript" src="{{ asset('js/jquery-3.5.1.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
@@ -153,6 +215,8 @@
                 role: $('.role:checked').val(),
             },
             success: function (res) {
+                $('#dataTable').DataTable().destroy(),
+                loaddata(),
                 iziToast.success({
                 title: 'OK',
                 message: res.text,
@@ -164,6 +228,58 @@
                 message: xhr.responseJSON.text,
             });
             }
+        })
+    })
+
+    $(document).on('click', '.edit', function() {
+        $.ajax({
+            url : "{{ route('setting.usermanagement.get-role') }}",
+            type: 'post',
+            data: {
+                _token: "{{ csrf_token() }}",
+                id: $(this).attr('id'),
+            },
+            success: function(res) {
+                $('#names').val(res.user.name);
+                $('#emails').val(res.user.email);
+                $('#labelRole').text(res.roles);
+            },
+            error: function(xhr) {
+                console.log(xhr);
+            },
+        })
+    })
+
+    $(document).on('click', '#editUser', function() {
+        $('#simpaneditUser').attr('disabled', false);
+        $('#names').attr('readonly', true);
+        $('#emails').attr('readonly', true);
+        $('#formRole').attr('hidden', false);
+        
+        $(document).on('click', '#simpaneditUser', function() {
+            $.ajax({
+                url: "{{ route('setting.usermanagement.update') }}",
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    id: $(this).attr('id'),
+                    name: $('#names').val(),
+                    email: $('#emails').val(),
+                    role: $('.roles:checked').val(),
+                },
+                success: function(res) {
+                    iziToast.success({
+                    title: 'OK',
+                    message: res.text,
+                })
+                },
+                error: function(xhr) {
+                    iziToast.warning({
+                    title: 'Gagal',
+                    message: xhr.responseJSON.text,
+                });
+                }
+            })
         })
     })
 </script> 

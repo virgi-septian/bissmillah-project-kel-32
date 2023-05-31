@@ -52,6 +52,8 @@ Route::group(['prefix' => 'setting', 'as' => 'setting.','middleware' => ['role:o
     // kalalog obat
     Route::get('user-management', [AdminPanelController::class, 'index'])->name('usermanagement');
     Route::post('user-management/store', [AdminPanelController::class, 'store'])->name('usermanagement.store');
+    Route::post('user-management/get-role', [AdminPanelController::class, 'getRole'])->name('usermanagement.get-role');
+    Route::post('user-management/edit', [AdminPanelController::class, 'update'])->name('usermanagement.update');
 });
 Route::group(['prefix' => 'transaksi', 'as' => 'transaksi.','middleware' => ['role:owner']], function() {
     // Transaksi
