@@ -54,7 +54,7 @@
                                     type="text"
                                     id="nama"
                                     name="nama"
-                                    class="form-control"
+                                    class="form-control invalid"
                                     placeholder="Nama Supplier"
                                 />
                                 <input
@@ -74,7 +74,7 @@
                                     type="text"
                                     id="telp"
                                     name="telp"
-                                    class="form-control"
+                                    class="form-control invalid"
                                     placeholder="No Telepon"
                                 />
                                 </div>
@@ -86,7 +86,7 @@
                                         type="text"
                                         id="email"
                                         name="email"
-                                        class="form-control"
+                                        class="form-control invalid"
                                         placeholder="xxxx@xxx.xx"
                                     />
                                 </div>
@@ -99,7 +99,7 @@
                                     type="text"
                                     id="rekening"
                                     name="rekening"
-                                    class="form-control"
+                                    class="form-control invalid"
                                     placeholder="No. Rekening"
                                 />
                                 </div>
@@ -111,7 +111,7 @@
                                     type="text"
                                     id="alamat"
                                     name="alamat"
-                                    class="form-control"
+                                    class="form-control invalid"
                                     cols="30"
                                     rows="10"
                                 ></textarea>
@@ -140,31 +140,6 @@
     $(document).ready(function() {
         loaddata()
     });
-    $(document).ready(function () {
-  // Ketika tombol di modal diklik
-  $('#exampleModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) // Tombol yang memicu modal
-    var id = button.data('id') // Mengambil data ID dari atribut data
-    var fileType = button.data('filetype') // Mengambil jenis file dari atribut data
-
-    var modal = $(this)
-
-    // Lakukan permintaan AJAX untuk mengambil data
-    $.ajax({
-      url: '/get-data/' + id,
-      type: 'GET',
-      dataType: 'json',
-      success: function (data) {
-        // Jika permintaan berhasil, tampilkan data dalam modal
-        modal.find('.modal-body').html('<p>Nama: ' + data.nama + '</p><p>Jenis file: ' + fileType + '</p><p>File: <a href="' + data.file_url + '">' + data.file_name + '</a></p>')
-      },
-      error: function (xhr, status, error) {
-        // Jika permintaan gagal, tampilkan pesan kesalahan
-        modal.find('.modal-body').html('<p>Error: ' + error + '</p>')
-      }
-    })
-  })
-})
 
     function loaddata() {
         $('#dataTable').DataTable({
@@ -226,6 +201,7 @@
                 });
             },
             error: function (xhr) {
+                // $('#email').addClass('invalid');
                 iziToast.warning({
                     title: 'Gagal',
                     message: xhr.responseJSON.text,

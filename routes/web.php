@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Map\HomeController;
 use App\Http\Controllers\ObatController;
 use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\permissionPanelController;
 use App\Http\Controllers\StockObatController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TitikController;
@@ -54,6 +55,10 @@ Route::group(['prefix' => 'setting', 'as' => 'setting.','middleware' => ['role:o
     Route::post('user-management/store', [AdminPanelController::class, 'store'])->name('usermanagement.store');
     Route::post('user-management/get-role', [AdminPanelController::class, 'getRole'])->name('usermanagement.get-role');
     Route::post('user-management/edit', [AdminPanelController::class, 'update'])->name('usermanagement.update');
+    Route::get('permission-management', [permissionPanelController::class, 'index'])->name('permission-management');
+    Route::post('permission-management/store', [permissionPanelController::class, 'store'])->name('permission-management.store');
+    Route::get('role-management', [RolePanelController::class, 'index'])->name('role-management');
+    Route::post('role-management/store', [RolePanelController::class, 'store'])->name('role-management.store');
 });
 Route::group(['prefix' => 'transaksi', 'as' => 'transaksi.','middleware' => ['role:owner']], function() {
     // Transaksi

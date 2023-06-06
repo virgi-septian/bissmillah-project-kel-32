@@ -109,29 +109,26 @@ class AdminPanelController extends Controller
         //
     }
 
-    public function update(Request $request, AdminPanel $adminPanel)
+    public function update(Request $request)
     {
-        // $rules = [
-        //     'name' => 'required',
-        //     'email' => 'required|email|unique:users',
-        //     'password' => 'required|unique:users',
-        //     'role' => 'required',
-        // ];
+        $rules = [
+            'name' => 'required',
+            'role' => 'required',
+        ];
+        
 
-        // $text = [
-        //     'name.required' => 'Kolom name tidak boleh kosong',
-        //     'email.required' => 'Email tidak boleh kosong',
-        //     'email.unique' => 'Email sudah terdaftar',
-        //     'email.email' => 'Format email tidak valid',
-        //     'password.required' => 'Password tidak boleh kosong',
-        //     'role.required' => 'Role tidak boleh kosong',
-        //     'password.unique' => 'Password sudah terdaftar',
-        // ];
-        // $validasi = Validator::make($request->all(), $rules, $text);
+        $text = [
+            'name.required' => 'Kolom name tidak boleh kosong',
+            'email.required' => 'Email tidak boleh kosong',
+            'email.email' => 'Format email tidak valid',
+            'password.required' => 'Password tidak boleh kosong',
+            'role.required' => 'Role tidak boleh kosong',
+        ];
+        $validasi = Validator::make($request->all(), $rules, $text);
 
-        // if($validasi->fails()){
-        //     return response()->json(['success' => 0,'text' => $validasi->errors()->first()], 422); 
-        // }
+        if($validasi->fails()){
+            return response()->json(['success' => 0,'text' => $validasi->errors()->first()], 422); 
+        }
         $id = $request->id;
 
         $data = [

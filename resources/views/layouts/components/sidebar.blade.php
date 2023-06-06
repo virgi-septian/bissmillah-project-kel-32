@@ -39,14 +39,6 @@
             <i class="menu-icon tf-icons bx bx-layout"></i>
             <div data-i18n="Layouts">Data Master</div>
             </a>
-
-            <li class="menu-item">
-            <a href="{{ route('menu.map.index') }}" class="menu-link">
-            <i class="menu-icon bi bi-gear"></i>
-            <div data-i18n="Layouts">MAP</div>
-            </a>
-        </li>
-
             <ul class="menu-sub">
             <li class="menu-item {{ Request::is('data-master/obat*') ? 'active' : ''}}">
                 <a href="{{ route('data-master.obat.index') }}" class="menu-link">
