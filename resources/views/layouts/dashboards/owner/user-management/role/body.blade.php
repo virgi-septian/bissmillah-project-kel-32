@@ -1,6 +1,7 @@
+
 <div class="row justify-content-beetwen">
     <div class="col-md-12">
-        <table class="table align-middle" id="dataTable3" style="width: 100%">
+        <table class="table align-middle" id="dataTableRole" style="width: 100%">
             <thead>
                 <th>No.</th>
                 <th>Name</th>
@@ -14,74 +15,69 @@
         <br>
     </div>
 </div>
-<div class="row mt-5">
-    <div class="col-md-6">
-            <div class="row">
-                <div class="col mb-3">
-                <label for="name_role" class="form-label">Name Role</label>
-                <input
-                    type="text"
-                    id="name_role"
-                    name="name_role"
-                    class="form-control"
-                    placeholder="Name role"
-                />
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col mb-3">
-                    <label for="display_name_role" class="form-label">Nama Tampilan</label>
+<form action="" id="formRole">
+    <section id="edit_role_form">
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col mb-3">
+                    <label for="name_role" class="form-label">Name Role</label>
                     <input
+                        disabled
                         type="text"
-                        id="display_name_role"
-                        name="display_name_role"
+                        id="name_role"
+                        name="name_role"
                         class="form-control"
-                        placeholder="Nama Tampilan"
+                        placeholder="Name role"
                     />
+                    </div>
                 </div>
-            </div>
+                
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="display_name_role" class="form-label">Nama Tampilan</label>
+                        <input type="text" hidden id="id_edit_form_role">
+                        <input
+                            disabled
+                            type="text"
+                            id="display_name_role"
+                            name="display_name_role"
+                            class="form-control"
+                            placeholder="Nama Tampilan"
+                        />
+                    </div>
+                </div>
 
-            <div class="row">
-                <div class="col mb-3">
-                    <label for="description_role" class="form-label">Deskripsi</label>
-                    <input
-                        type="text"
-                        id="description_role"
-                        name="description_role"
-                        class="form-control"
-                        placeholder="Deskripsi"
-                    />
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="description_role" class="form-label">Deskripsi</label>
+                        <input
+                            disabled
+                            type="text"
+                            id="description_role"
+                            name="description_role"
+                            class="form-control"
+                            placeholder="Deskripsi"
+                        />
+                    </div>
                 </div>
+            
             </div>
+        </div>  
+        <br>
         
+        <div id="checkbox">
+
         </div>
-        <div class="col-md-6">
-            <div class="modal-body">
-                <h5>Pilih Permission</h5>
-                <div class="form-check mt-3">
-                    <input class="form-check-input hakAkses" name="hakAkses[]" type="checkbox" value="read" id="defaultCheck1" />
-                    <label class="form-check-label" for="defaultCheck1"> Read </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input hakAkses" name="hakAkses[]" type="checkbox" value="create" id="defaultCheck2" />
-                    <label class="form-check-label" for="defaultCheck2"> Create </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input hakAkses" name="hakAkses[]" type="checkbox" value="update" id="defaultCheck3" />
-                    <label class="form-check-label" for="defaultCheck3"> Update </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input hakAkses" name="hakAkses[]" type="checkbox" value="delete" id="defaultCheck3" />
-                    <label class="form-check-label" for="defaultCheck3"> Delete </label>
-                </div>
-            </div>
-        <!-- Button to trigger modal -->
-        <center>
-            <button type="submit" id="tambahPermission" class="btn btn-primary">Tambah Permission</button>
-            <button type="submit" hidden id="batalPermission" class="btn btn-primary">Batal</button>
-            <button type="submit" hidden id="simpanPermission" class="btn btn-primary">Simpan</button>
-        </center>
-    </div>
-</div>        
+    </section>
+</form>
+    <!-- Button to trigger modal -->
+<center>
+    <button type="submit" id="tambahRole" class="btn btn-primary">Tambah Role</button>
+    <button type="submit" hidden id="batalRole" class="btn btn-danger">Batal</button>
+    <button id="simpanRole" class="btn btn-primary text-bg-primary" hidden>
+        <span class="spinner-border spinner-border-sm" hidden id="spinner" role="status" aria-hidden="true"></span>
+        Simpan Role
+    </button>
+</center>
 

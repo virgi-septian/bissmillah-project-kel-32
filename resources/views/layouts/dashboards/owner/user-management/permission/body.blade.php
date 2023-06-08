@@ -58,7 +58,7 @@
         </div>
         <div class="col-md-6">
             <div class="modal-body">
-                <h5>Pilih Permission</h5>
+                <h5>Pilih Hak Akses :</h5>
                 <div class="form-check mt-3">
                     <input class="form-check-input hakAkses" name="hakAkses[]" type="checkbox" value="read" id="defaultCheck1" />
                     <label class="form-check-label" for="defaultCheck1"> Read </label>

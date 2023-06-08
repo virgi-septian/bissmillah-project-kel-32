@@ -7,6 +7,7 @@
         <div class="card">
         <div class="card-body">
             <div class="card-title d-flex align-items-start justify-content-between">
+                
             <div class="avatar flex-shrink-0">
                 <img
                 src="../assets/img/icons/unicons/chart-success.png"
@@ -66,6 +67,9 @@
             </div>
             </div>
             <span>Sales</span>
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
             <h3 class="card-title text-nowrap mb-1">$4,679</h3>
             <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
         </div>

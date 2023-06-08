@@ -22,7 +22,7 @@ class permissionPanelController extends Controller
                 $button = ' <div class="d-flex"> ';
 
                 $button .= ' <button id="'.$data->id.'" name="edit" class="edit btn btn-outline-success btn-sm me-1"><i class="bi bi-pencil-fill"></i></button> ';
-                $button .= ' <button id="'.$data->id.'" name="hapus" class="hapus btn btn-outline-danger btn-sm me-1"><i class="bi bi-trash-fill"></i></button> ';
+                $button .= ' <button id="'.$data->id.'" name="hapus" class="hapus_permissionmanagement btn btn-outline-danger btn-sm me-1"><i class="bi bi-trash-fill"></i></button> ';
                 $button .= ' </div> ';
 
                 return $button;
@@ -48,7 +48,7 @@ class permissionPanelController extends Controller
             'name.required' => 'Kolom nama permission tidak boleh kosong',
             'display_name.required' => 'Display name tidak boleh kosong',
             'description.required' => 'Description tidak boleh kosong',
-            'hakAkses.required' => 'Tolong Isi Permission',
+            'hakAkses.required' => 'Tolong Isi Hak Akses',
         ];
 
         $validasi = Validator::make($request->all(), $rules, $text);
@@ -85,6 +85,18 @@ class permissionPanelController extends Controller
             } else {
                 return response()->json(['text' => 'Data Berhasil Gagal Disimpan'], 422);
             }
+        }
+    }
+
+    public function destroy(Request $request)
+    {
+        $data = Permission::find($request->id);
+        $simpan = $data->delete($request->all());
+        if ($simpan) {
+            return response()->json(['text' => 'Data Berhasil Dihapus'], 200);
+        }
+        else{
+            return response()->json(['text' => 'Data Gagal Dihapus'], 400);    
         }
     }
 }

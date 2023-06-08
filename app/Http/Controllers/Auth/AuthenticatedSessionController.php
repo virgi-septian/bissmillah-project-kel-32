@@ -19,6 +19,7 @@ class AuthenticatedSessionController extends Controller
     {
         return view('auth.login');
     }
+    
     public function createadmin()
     {
         return view('auth.admin-login');

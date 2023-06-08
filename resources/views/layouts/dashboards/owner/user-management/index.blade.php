@@ -6,6 +6,8 @@
     <div class="card-header mb-3 border-bottom border-3"><h4>User Management</h4>
     </div>
     <div class="card-body">
+      <section id="awal_table">
+
         <div class="row">
             <div class="col-xl-12">
             <div class="nav-align-top mb-4">
@@ -15,6 +17,7 @@
                   type="button"
                   class="nav-link active"
                   role="tab"
+                  id="navs-pills-top-user"
                   data-bs-toggle="tab"
                   data-bs-target="#navs-pills-top-home"
                   aria-controls="navs-pills-top-home"
@@ -28,6 +31,7 @@
                   type="button"
                   class="nav-link"
                   role="tab"
+                  id="navs-pills-top-permission"
                   data-bs-toggle="tab"
                   data-bs-target="#navs-pills-top-profile"
                   aria-controls="navs-pills-top-profile"
@@ -41,6 +45,7 @@
                   type="button"
                   class="nav-link"
                   role="tab"
+                  id="navs-pills-top-role"
                   data-bs-toggle="tab"
                   data-bs-target="#navs-pills-top-messages"
                   aria-controls="navs-pills-top-messages"
@@ -57,14 +62,14 @@
               <div class="tab-pane fade" id="navs-pills-top-profile" role="tabpanel">
                 @include('layouts.dashboards.owner.user-management.permission.body')
               </div>
-              <div class="tab-pane fade" id="navs-pills-top-profile" role="tabpanel">
+              <div class="tab-pane fade" id="navs-pills-top-messages" role="tabpanel">
                 @include('layouts.dashboards.owner.user-management.role.body')
               </div>
             </div>
 
           </div>
         </div>
-        
+      </section>  
     </div>
 </div>
 <script type="text/javascript" src="{{ asset('js/jquery-3.5.1.js') }}"></script>

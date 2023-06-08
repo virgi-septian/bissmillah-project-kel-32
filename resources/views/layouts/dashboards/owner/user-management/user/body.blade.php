@@ -1,3 +1,4 @@
+
 <div class="row justify-content-beetwen">
     <div class="col-md-12">
         <table class="table align-middle" id="dataTable" style="width: 100%">
@@ -59,19 +60,15 @@
     </div>
     <div class="col-md-6">
         <div class="modal-body">
-            <h5>Pilih Role</h5>
-            <div class="form-check">
-                <input type="radio" name="role" id="role" class="role" value="owner">
-                <label for="role">Super Admin</label>
+            <div id="radio">
+                
             </div>
-            <div class="form-check">
-                <input type="radio" name="role" id="role" class="role" value="gudang">
-                <label for="role">Admin Gudang</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" name="role" id="role" class="role" value="kasir">
-                <label for="role">Admin Kasir</label>
-            </div>
+            {{-- @foreach($roles as $role)
+                <div class="form-check">
+                    <input type="radio" name="role" id="{{ $role->name }}" class="role" value="{{ $role->id }}">
+                    <label for="{{ $role->name }}">{{ $role->display_name }}</label>
+                </div>
+            @endforeach --}}
         </div>
         <!-- Button to trigger modal -->
         <center>
@@ -88,61 +85,70 @@
                     data-bs-dismiss="modal"
                     aria-label="Close"
                 ></button>
+                
                 </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col mb-3">
-                            <label for="names" class="form-label">Username</label>
-                            <input
-                                type="text"
-                                id="names"
-                                name="names"
-                                class="form-control"
-                                placeholder="Names"
-                            />
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col mb-3">
+                                    <label for="names" class="form-label">Username</label>
+                                    <input
+                                        type="text"
+                                        id="names"
+                                        name="names"
+                                        class="form-control"
+                                        placeholder="Names"
+                                    />
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="row">
+                                    
+                                    <div class="col mb-3">
+                                        <label for="emails" class="form-label">Email</label>
+                                        <input
+                                            type="text"
+                                            id="emails"
+                                            name="emails"
+                                            class="form-control"
+                                            placeholder="xxxx@xxx.xx"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="row" hidden>
+                                    <div class="col mb-3">
+                                        <label for="id_edit" class="form-label">id</label>
+                                        <input
+                                            type="text"
+                                            id="id_edit"
+                                            name="id_edit"
+                                            class="form-control"
+                                            placeholder="xxxx@xxx.xx"
+                                        />
+                                    </div>
+                                </div>
+                                
+                                <div id="formRole">
+                                    <div id="radio_modal">
+
+                                    </div>
+                                    {{-- @foreach($roles as $role)
+                                        <div class="form-check">
+                                            <input type="radio" name="roles" id="{{ $role->name }}" class="roles" value="{{ $role->id }}">
+                                            <label for="{{ $role->name }}">{{ $role->display_name }}</label>
+                                        </div>
+                                    @endforeach --}}
+                                </div>
                             </div>
-                            
-                        </div>
-                        
-                        <div class="row">
-                            
-                            <div class="col mb-3">
-                                <label for="emails" class="form-label">Email</label>
-                                <input
-                                    type="text"
-                                    id="emails"
-                                    name="emails"
-                                    class="form-control"
-                                    placeholder="xxxx@xxx.xx"
-                                />
-                            </div>
-                        </div>
-                        <div class="row" hidden>
-                            <div class="col mb-3">
-                                <label for="id_edit" class="form-label">id</label>
-                                <input
-                                    type="text"
-                                    id="id_edit"
-                                    name="id_edit"
-                                    class="form-control"
-                                    placeholder="xxxx@xxx.xx"
-                                />
-                            </div>
-                        </div>
-                        
-                        <div id="formRole" hidden>
-                            <h5>Pilih Role</h5>
-                            <div class="form-check">
-                                <input type="radio" name="roles" id="roles" class="roles" value="owner">
-                                <label for="roles">Super Admin</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="radio" name="roles" id="roles" class="roles" value="gudang">
-                                <label for="roles">Admin Gudang</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="radio" name="roles" id="roles" class="roles" value="kasir">
-                                <label for="roles">Admin Kasir</label>
+                            <div class="col-lg-6">
+                                <h5>Permissions</h5>
+                                <ul>
+                                    <div id="permit">
+
+                                    </div>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -154,8 +160,7 @@
                         <button type="button" id="btn-tutup" name="batal" class="btn btn-outline-danger" data-bs-dismiss="modal">
                             Close
                         </button>
-                        <button type="submit" id="editUser" class="btn btn-primary">Edit</button>
-                        <button type="submit" disabled id="simpaneditUser" class="btn btn-primary">Simpan</button>
+                        <button type="submit" id="simpaneditUser" class="btn btn-primary">Simpan</button>
                     </div>
             </div>
             </div>

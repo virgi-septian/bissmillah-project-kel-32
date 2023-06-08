@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Validator;
 
@@ -124,13 +125,17 @@ class SupplierController extends Controller
 
     public function destroy(Request $request)
     {
-        $data = Supplier::find($request->id);
-        $simpan = $data->delete($request->all());
-        if ($simpan) {
-            return response()->json(['text' => 'Data Berhasil Dihapus'], 200);
-        }
-        else{
-            return response()->json(['text' => 'Data Gagal Dihapus'], 400);    
+        if(Auth::user()->isAbleTo('users-delete')){
+            $data = Supplier::find($request->id);
+            $simpan = $data->delete($request->all());
+            if ($simpan) {
+                return response()->json(['text' => 'Data Berhasil Dihapus'], 200);
+            }
+            else{
+                return response()->json(['text' => 'Data Gagal Dihapus'], 400);    
+            }
+        }else{
+            return response()->json(['text' => 'Anda Tidak Memiliki Akses'], 404);
         }
     }
 }

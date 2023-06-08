@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama', 30);
             $table->string('telp', 12);
-            $table->string('email', 30);
+            $table->string('email', 255);
             $table->string('rekening', 30);
             $table->string('alamat', 255);
             $table->timestamps();

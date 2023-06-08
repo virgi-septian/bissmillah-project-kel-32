@@ -34,7 +34,6 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -51,6 +50,9 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
         $user->attachRole('user');
+        $user->roles->each(function ($role) use ($user) {
+            $user->syncPermissions($role->permissions);
+        });
         return redirect(RouteServiceProvider::HOME);
     }
 }

@@ -57,6 +57,20 @@
     crossorigin=""></script>
     <!-- Page JS -->
     @yield('css')
+    <style>
+      #spinner {
+        display: block;
+      }
+      
+      #modal-content {
+        display: none;
+      }
+      
+      #spinner.spinner-border {
+        width: 3rem;
+        height: 3rem;
+      }
+    </style>
   </head>
 
   <body style="color: black">

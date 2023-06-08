@@ -9,6 +9,7 @@ use App\Http\Controllers\Map\HomeController;
 use App\Http\Controllers\ObatController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\permissionPanelController;
+use App\Http\Controllers\RolePanelController;
 use App\Http\Controllers\StockObatController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TitikController;
@@ -52,13 +53,20 @@ Route::group(['prefix' => 'menu', 'as' => 'menu.','middleware' => ['role:owner']
 Route::group(['prefix' => 'setting', 'as' => 'setting.','middleware' => ['role:owner']], function() {
     // kalalog obat
     Route::get('user-management', [AdminPanelController::class, 'index'])->name('usermanagement');
+    Route::get('user-management/reload', [AdminPanelController::class, 'reload'])->name('usermanagement.reload');
     Route::post('user-management/store', [AdminPanelController::class, 'store'])->name('usermanagement.store');
     Route::post('user-management/get-role', [AdminPanelController::class, 'getRole'])->name('usermanagement.get-role');
     Route::post('user-management/edit', [AdminPanelController::class, 'update'])->name('usermanagement.update');
+    Route::post('user-management/destroy', [AdminPanelController::class, 'destroy'])->name('usermanagement.destroy');
     Route::get('permission-management', [permissionPanelController::class, 'index'])->name('permission-management');
     Route::post('permission-management/store', [permissionPanelController::class, 'store'])->name('permission-management.store');
+    Route::post('user-permission/destroy', [permissionPanelController::class, 'destroy'])->name('permission.destroy');
     Route::get('role-management', [RolePanelController::class, 'index'])->name('role-management');
+    Route::get('role-management/reload', [RolePanelController::class, 'reload'])->name('role-management.reload');
     Route::post('role-management/store', [RolePanelController::class, 'store'])->name('role-management.store');
+    Route::post('role-management/info-role', [RolePanelController::class, 'infoRole'])->name('role-management.info-role');
+    Route::post('role-management/edit', [RolePanelController::class, 'update'])->name('role-management.update');
+    
 });
 Route::group(['prefix' => 'transaksi', 'as' => 'transaksi.','middleware' => ['role:owner']], function() {
     // Transaksi
